@@ -43,10 +43,17 @@ def valid_email(email):
 
 
 # implement 2 APIs to be available from command line
+# user can enter whole API url link to command line ar use variables API_cats or API_dogs
 def API_validation(api_from_command, API_cats, API_dogs):
-    if api_from_command == API_cats:
+    if (
+        api_from_command == "API_cats"
+        or api_from_command == "https://meowfacts.herokuapp.com/"
+    ):
         return API_cats, "cats"
-    elif api_from_command == API_dogs:
+    elif (
+        api_from_command == "API_dogs"
+        or api_from_command == "http://dog-api.kinduff.com//api/facts?number=1"
+    ):
         return API_dogs, "dogs"
     else:
         sys.exit("Provided API is unrecognized")
@@ -93,10 +100,13 @@ def send_email(email_adress, message):
     email_obj["Subject"] = subject
     email_obj.set_content(body)
     context = ssl.create_default_context()
-
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:
-        smtp.login(email_sender, email_password)
-        smtp.sendmail(email_sender, email_receiver, email_obj.as_string())
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as smtp:
+            smtp.login(email_sender, email_password)
+            smtp.sendmail(email_sender, email_receiver, email_obj.as_string())
+            print("Email is sent successfully!")
+    except:
+        print("Error occured while trying to send email")
 
 
 if __name__ == "__main__":

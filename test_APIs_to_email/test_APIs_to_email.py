@@ -36,7 +36,9 @@ def test_API_validation():
     cats_url = "https://meowfacts.herokuapp.com/"
     dogs_url = "http://dog-api.kinduff.com//api/facts?number=1"
     assert API_validation(cats_url, cats_url, dogs_url) == (cats_url, "cats")
+    assert API_validation("API_cats", cats_url, dogs_url) == (cats_url, "cats")
     assert API_validation(dogs_url, cats_url, dogs_url) == (dogs_url, "dogs")
+    assert API_validation("API_dogs", cats_url, dogs_url) == (dogs_url, "dogs")
     with pytest.raises(SystemExit) as excinfo:
         API_validation("http://unexpected.api.adress.com", cats_url, dogs_url)
     assert "Provided API is unrecognized" in str(excinfo.value)
