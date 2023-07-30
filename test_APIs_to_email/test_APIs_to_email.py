@@ -1,7 +1,7 @@
 #for running tests used "python3 -m pytest test_APIs_to_email.py", 
 #in my environment running "pytest" was not recognized (it's installed)
 import pytest
-from APIs_to_email.APIs_to_email import valid_email, command_line_input, API_validation
+from APIs_to_email import valid_email, command_line_input, API_validation
 
 def test_command_line_input():
     argv = ["script.py", "example@gmail.com", "https://meowfacts.herokuapp.com/"]
