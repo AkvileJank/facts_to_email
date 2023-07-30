@@ -28,8 +28,8 @@ Follow the steps below to install and run the "API-to-Email" project:
 4. **Set Up Environment Variables:**
    In the `.env` file, add the following lines and replace the placeholders with your actual Gmail address and an app password:
    ```
-   EMAIL_SENDER_ADDRESS=your_email@gmail.com
-   EMAIL_SENDER_PASSWORD=your_app_password
+   EMAIL_SENDER_ADDRESS = 'your_email@gmail.com'
+   EMAIL_SENDER_PASSWORD= 'your_password'
    ```
 
    Make sure to enable "Less secure app access" in your Gmail settings and generate an app password for the sender's email.
